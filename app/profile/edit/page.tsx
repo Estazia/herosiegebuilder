@@ -28,9 +28,10 @@ export default function EditProfilePage() {
         const supabase = createClient()
         const {
           data: { user },
+          error: userError,
         } = await supabase.auth.getUser()
 
-        if (!user) {
+        if (userError || !user) {
           router.push('/auth/login')
           return
         }
@@ -41,12 +42,21 @@ export default function EditProfilePage() {
           .eq('id', user.id)
           .single()
 
-        if (error) throw error
+        if (error) {
+          // PGRST116 means the profile doesn't exist, which is OK for a new user
+          if (error.code !== 'PGRST116') {
+            throw error
+          }
+          // For new users, just set empty profile data
+          setProfile({ id: user.id } as any)
+          return
+        }
 
         setProfile(data)
-        setUsername(data.username)
+        setUsername(data.username || '')
         setAvatarUrl(data.avatar_url || '')
       } catch (err) {
+        console.error('Error fetching profile:', err)
         setError(err instanceof Error ? err.message : 'Failed to load profile')
       } finally {
         setIsLoading(false)
@@ -69,11 +79,14 @@ export default function EditProfilePage() {
 
       const { error } = await supabase
         .from('profiles')
-        .update({
+        .upsert({
+          id: profile.id,
           username,
           avatar_url: avatarUrl || null,
+          updated_at: new Date().toISOString(),
+        }, {
+          onConflict: 'id'
         })
-        .eq('id', profile.id)
 
       if (error) throw error
 

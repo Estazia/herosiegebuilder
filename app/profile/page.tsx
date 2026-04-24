@@ -19,28 +19,30 @@ export default async function ProfilePage() {
   // Get authenticated user
   const {
     data: { user },
+    error: userError,
   } = await supabase.auth.getUser()
 
-  if (!user) {
+  if (userError || !user) {
     redirect('/auth/login')
   }
 
-  // Get user profile and builds
-  const [profileRes, buildsRes] = await Promise.all([
-    supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', user.id)
-      .single(),
-    supabase
-      .from('builds')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: false }),
-  ])
+  // Get user profile
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single()
 
-  const profile = profileRes.data
-  const builds = buildsRes.data || []
+  if (profileError && profileError.code !== 'PGRST116') {
+    console.error('Profile error:', profileError)
+  }
+
+  // Get user builds
+  const { data: builds = [] } = await supabase
+    .from('builds')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
 
   const initials = profile?.username
     ? profile.username
