@@ -120,36 +120,34 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
   const Icon = classIcons[heroClass] || Wand2
 
   const sizeClasses = {
-    sm: 'h-8 w-8',
-    md: 'h-12 w-12',
-    lg: 'h-16 w-16',
+    sm: 'h-6 w-6',
+    md: 'h-8 w-8',
+    lg: 'h-10 w-10',
   }
 
   const containerClasses = {
-    sm: 'h-8 w-8',
-    md: 'h-12 w-12',
-    lg: 'h-16 w-16',
+    sm: 'h-6 w-6',
+    md: 'h-8 w-8',
+    lg: 'h-10 w-10',
   }
 
   return (
     <div className={cn('flex items-center gap-2', className)}>
       <div
         className={cn(
-          'flex items-center justify-center rounded-md bg-muted/50 overflow-hidden flex-shrink-0 relative',
+          'flex items-center justify-center rounded-md bg-muted/50 overflow-hidden',
           containerClasses[size]
         )}
       >
         {hasImage && imageUrl ? (
-          <div className="flex items-center justify-center w-full h-full">
-            <Image
-              src={imageUrl}
-              alt={heroClass}
-              width={size === 'sm' ? 28 : size === 'md' ? 40 : 56}
-              height={size === 'sm' ? 28 : size === 'md' ? 40 : 56}
-              className="object-contain"
-              unoptimized
-            />
-          </div>
+          <Image
+            src={imageUrl}
+            alt={heroClass}
+            width={size === 'sm' ? 24 : size === 'md' ? 32 : 40}
+            height={size === 'sm' ? 24 : size === 'md' ? 32 : 40}
+            className="w-full h-full object-cover"
+            unoptimized
+          />
         ) : (
           <Icon className={cn(sizeClasses[size], 'text-muted-foreground')} />
         )}
