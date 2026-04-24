@@ -120,32 +120,32 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
   const Icon = classIcons[heroClass] || Wand2
 
   const sizeClasses = {
-    sm: 'h-6 w-6',
-    md: 'h-8 w-8',
-    lg: 'h-10 w-10',
+    sm: 'h-4 w-4',
+    md: 'h-5 w-5',
+    lg: 'h-6 w-6',
   }
 
-  const containerClasses = {
-    sm: 'h-6 w-6',
-    md: 'h-8 w-8',
-    lg: 'h-10 w-10',
+  const paddingClasses = {
+    sm: 'p-0.5',
+    md: 'p-1',
+    lg: 'p-1.5',
   }
 
   return (
     <div className={cn('flex items-center gap-2', className)}>
       <div
         className={cn(
-          'flex items-center justify-center rounded-md bg-muted/50 overflow-hidden',
-          containerClasses[size]
+          'flex items-center justify-center rounded-md bg-muted/50',
+          paddingClasses[size]
         )}
       >
         {hasImage && imageUrl ? (
           <Image
             src={imageUrl}
             alt={heroClass}
-            width={size === 'sm' ? 24 : size === 'md' ? 32 : 40}
-            height={size === 'sm' ? 24 : size === 'md' ? 32 : 40}
-            className="w-full h-full object-cover"
+            width={size === 'sm' ? 16 : size === 'md' ? 20 : 24}
+            height={size === 'sm' ? 16 : size === 'md' ? 20 : 24}
+            className="h-auto w-auto"
             unoptimized
           />
         ) : (
