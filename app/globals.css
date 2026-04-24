@@ -140,7 +140,7 @@
   }
   html {
     background: 
-      linear-gradient(rgba(8, 8, 10, 0.95), rgba(8, 8, 10, 0.95)),
+      linear-gradient(rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0.85)),
       url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/background0-8mZzB2a6RHvNfRv8ZLD9UczpSFSyz9.png');
     background-attachment: fixed;
     background-size: cover;
