@@ -143,8 +143,8 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
           <Image
             src={imageUrl}
             alt={heroClass}
-            width={size === 'sm' ? 16 : size === 'md' ? 20 : 32}
-            height={size === 'sm' ? 16 : size === 'md' ? 20 : 32}
+            width={size === 'sm' ? 16 : size === 'md' ? 20 : 28}
+            height={size === 'sm' ? 16 : size === 'md' ? 20 : 28}
             className="h-auto w-auto"
             unoptimized
           />
