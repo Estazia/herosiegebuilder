@@ -49,7 +49,7 @@ export function ClassFilterButtons({
             size="sm"
             onClick={() => onClassSelect(heroClass)}
             className={cn(
-              'h-10 w-10 p-0 rounded-md transition-all relative group',
+              'h-16 w-16 p-0 rounded-md transition-all relative group',
               selectedClass === heroClass
                 ? 'bg-primary text-primary-foreground ring-2 ring-primary/50'
                 : 'border-2 border-muted-foreground/20 hover:border-primary/50 hover:bg-muted/50'
@@ -58,11 +58,8 @@ export function ClassFilterButtons({
           >
             <ClassIcon
               heroClass={heroClass}
-              size="md"
-              className={cn(
-                'h-5 w-5',
-                selectedClass === heroClass ? 'text-primary-foreground' : ''
-              )}
+              size="lg"
+              className="h-full w-full flex items-center justify-center"
             />
             
             {/* Tooltip */}

@@ -122,13 +122,13 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
   const sizeClasses = {
     sm: 'h-4 w-4',
     md: 'h-5 w-5',
-    lg: 'h-6 w-6',
+    lg: 'h-8 w-8',
   }
 
   const paddingClasses = {
     sm: 'p-0.5',
     md: 'p-1',
-    lg: 'p-1.5',
+    lg: 'p-2',
   }
 
   return (
@@ -143,8 +143,8 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
           <Image
             src={imageUrl}
             alt={heroClass}
-            width={size === 'sm' ? 16 : size === 'md' ? 20 : 24}
-            height={size === 'sm' ? 16 : size === 'md' ? 20 : 24}
+            width={size === 'sm' ? 16 : size === 'md' ? 20 : 32}
+            height={size === 'sm' ? 16 : size === 'md' ? 20 : 32}
             className="h-auto w-auto"
             unoptimized
           />
