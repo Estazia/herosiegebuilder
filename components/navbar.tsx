@@ -156,7 +156,7 @@ export function Navbar() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href="/profile/builds" className="flex items-center gap-2">
+                    <Link href="/profile" className="flex items-center gap-2">
                       <Hammer className="h-4 w-4" />
                       My Builds
                     </Link>
