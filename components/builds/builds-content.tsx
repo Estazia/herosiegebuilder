@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Search, Plus, SlidersHorizontal, X } from 'lucide-react'
+import { Search, Plus, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { BuildCard, BuildCardSkeleton } from '@/components/build-card'
+import { ClassFilterButtons } from '@/components/class-filter-buttons'
 import { createClient } from '@/lib/supabase/client'
 import { HERO_CLASSES, type Build, type HeroClass, type BuildSortOption } from '@/lib/types'
 import { cn } from '@/lib/utils'
@@ -189,39 +190,28 @@ export function BuildsContent() {
           </Button>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          {/* Search */}
-          <form onSubmit={handleSearch} className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search builds..."
-              value={localSearch}
-              onChange={(e) => setLocalSearch(e.target.value)}
-              className="pl-9 bg-card"
-            />
-          </form>
+        {/* Search Bar */}
+        <form onSubmit={handleSearch} className="relative w-full">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search builds..."
+            value={localSearch}
+            onChange={(e) => setLocalSearch(e.target.value)}
+            className="pl-9 bg-card w-full"
+          />
+        </form>
 
-          {/* Class Filter */}
-          <Select
-            value={classFilter}
-            onValueChange={(value) => updateFilters({ class: value })}
-          >
-            <SelectTrigger className="w-full sm:w-48 bg-card">
-              <SlidersHorizontal className="h-4 w-4 mr-2" />
-              <SelectValue placeholder="All Classes" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Classes</SelectItem>
-              {HERO_CLASSES.map((heroClass) => (
-                <SelectItem key={heroClass} value={heroClass}>
-                  {heroClass}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+        {/* Class Filter Buttons */}
+        <div className="w-full">
+          <ClassFilterButtons
+            selectedClass={classFilter}
+            onClassSelect={(value) => updateFilters({ class: value })}
+            showLabel={true}
+          />
+        </div>
 
-          {/* Sort */}
+        {/* Sort */}
+        <div className="flex gap-4">
           <Select
             value={sortBy}
             onValueChange={(value) => updateFilters({ sort: value })}
