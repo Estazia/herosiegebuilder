@@ -140,14 +140,14 @@
   }
   html {
     background: 
-      linear-gradient(rgba(8, 8, 10, 0.85), rgba(8, 8, 10, 0.85)),
+      linear-gradient(rgba(8, 8, 10, 0.92), rgba(8, 8, 10, 0.92)),
       url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/background0-8mZzB2a6RHvNfRv8ZLD9UczpSFSyz9.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-transparent text-foreground;
   }
 }
 
