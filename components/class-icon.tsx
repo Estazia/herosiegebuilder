@@ -143,9 +143,9 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
           <Image
             src={imageUrl}
             alt={heroClass}
-            width={size === 'sm' ? 32 : size === 'md' ? 48 : 64}
-            height={size === 'sm' ? 32 : size === 'md' ? 48 : 64}
-            className="w-full h-full object-cover"
+            width={size === 'sm' ? 24 : size === 'md' ? 36 : 48}
+            height={size === 'sm' ? 24 : size === 'md' ? 36 : 48}
+            className="w-auto h-auto object-contain"
             unoptimized
           />
         ) : (
