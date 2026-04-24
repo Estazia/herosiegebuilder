@@ -31,14 +31,14 @@ export function ClassFilterButtons({
           size="sm"
           onClick={() => onClassSelect('all')}
           className={cn(
-            'h-10 px-3 rounded-md transition-all cursor-pointer',
+            'h-12 w-12 p-0 rounded-md transition-all cursor-pointer flex items-center justify-center',
             selectedClass === 'all'
-              ? 'bg-primary text-primary-foreground'
-              : 'border-2 border-muted-foreground/30 hover:border-primary/50'
+              ? 'bg-primary text-primary-foreground ring-2 ring-primary/50'
+              : 'border-2 border-muted-foreground/20 hover:border-primary/50 hover:bg-muted/50'
           )}
           title="All Classes"
         >
-          <span className="font-semibold text-xs sm:text-sm">ALL</span>
+          <span className="font-bold text-xs">ALL</span>
         </Button>
 
         {/* Class buttons */}
@@ -49,7 +49,7 @@ export function ClassFilterButtons({
             size="sm"
             onClick={() => onClassSelect(heroClass)}
             className={cn(
-              'h-14 w-14 p-0 rounded-md transition-all relative group cursor-pointer',
+              'h-12 w-12 p-0 rounded-md transition-all relative group cursor-pointer',
               selectedClass === heroClass
                 ? 'bg-primary text-primary-foreground ring-2 ring-primary/50'
                 : 'border-2 border-muted-foreground/20 hover:border-primary/50 hover:bg-muted/50'
