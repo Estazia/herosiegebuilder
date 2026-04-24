@@ -135,19 +135,21 @@ export function ClassIcon({ heroClass, size = 'md', showLabel = false, className
     <div className={cn('flex items-center gap-2', className)}>
       <div
         className={cn(
-          'flex items-center justify-center rounded-md bg-muted/50 overflow-hidden flex-shrink-0',
+          'flex items-center justify-center rounded-md bg-muted/50 overflow-hidden flex-shrink-0 relative',
           containerClasses[size]
         )}
       >
         {hasImage && imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={heroClass}
-            width={size === 'sm' ? 28 : size === 'md' ? 40 : 56}
-            height={size === 'sm' ? 28 : size === 'md' ? 40 : 56}
-            className="max-w-full max-h-full object-contain"
-            unoptimized
-          />
+          <div className="flex items-center justify-center w-full h-full">
+            <Image
+              src={imageUrl}
+              alt={heroClass}
+              width={size === 'sm' ? 28 : size === 'md' ? 40 : 56}
+              height={size === 'sm' ? 28 : size === 'md' ? 40 : 56}
+              className="object-contain"
+              unoptimized
+            />
+          </div>
         ) : (
           <Icon className={cn(sizeClasses[size], 'text-muted-foreground')} />
         )}
